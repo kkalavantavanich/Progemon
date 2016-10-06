@@ -1,49 +1,17 @@
 package logic.terrain;
 
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.imageio.ImageIO;
-
-import graphic.DrawingUtility;
-import graphic.IRenderable;
 
 /** FightTerrain */
 @SuppressWarnings("unused")
-public class FightTerrain implements IRenderable {
+public class FightTerrain {
 	private int x, y;
-	private boolean isShadowed, isCursur;
+	private boolean isShadowed;
 	private TerrainType type;
-
+	
 	public static enum TerrainType {
-		GRASS, ROCK, WATER, TREE, GROUND;
-		private int moveCost;
-
-		private TerrainType(int moveCost) {
-			this.moveCost = moveCost;
-		}
-
-		private TerrainType() {
-			this(1);
-		}
-
-		public int getMoveCost() {
-			return this.moveCost;
-		}
-		
-		public String getImageName(){
-			return "load\\img\\terrain\\" + this.toString() + ".png";
-		}
-	}
-
-	public FightTerrain(int x, int y, TerrainType type) {
-		// TODO Auto-generated constructor stub
-		this.x = x;
-		this.y = y;
-		this.type = type;
+		GRASS, ROCK, WATER, TREE;
 	}
 
 	private ArrayList<FightTerrain> toArrayList() {
@@ -54,7 +22,7 @@ public class FightTerrain implements IRenderable {
 
 	@Override
 	public String toString() {
-		return "FightTerrain [x=" + x + ", y=" + y + ", type=" + type + "]";
+		return "FightTerrain [x=" + x + ", y=" + y + ", isShadowed=" + isShadowed + ", type=" + type + "]";
 	}
 
 	public final int getX() {
@@ -69,70 +37,8 @@ public class FightTerrain implements IRenderable {
 		return isShadowed;
 	}
 
-	public final void setShadowed(boolean isShadowed) {
-		this.isShadowed = isShadowed;
-	}
-	
-	public boolean isCursur() {
-		return isCursur;
-	}
-	
-	public void setCursur(boolean isCursur) {
-		this.isCursur = isCursur;
-	}
-
 	public final TerrainType getType() {
 		return type;
-	}
-
-	public static TerrainType toFightTerrainType(String fightTerrainString) {
-		for (TerrainType tt : TerrainType.values()) {
-			if (fightTerrainString.equalsIgnoreCase(tt.toString())) {
-				return tt;
-			}
-		}
-		return null;
-	}
-
-	public void draw() {
-		DrawingUtility.drawFightTerrain(this);
-	}
-
-	@Override
-	public void getDepth() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (isShadowed ? 1231 : 1237);
-		result = prime * result + ((type == null) ? 0 : type.hashCode());
-		result = prime * result + x;
-		result = prime * result + y;
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		FightTerrain other = (FightTerrain) obj;
-		if (isShadowed != other.isShadowed)
-			return false;
-		if (type != other.type)
-			return false;
-		if (x != other.x)
-			return false;
-		if (y != other.y)
-			return false;
-		return true;
 	}
 
 }

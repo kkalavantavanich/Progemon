@@ -1,3 +1,0 @@
-#Test loadActiveSkills 001
-HELLO WORLD 13
-utit mo ko 91
