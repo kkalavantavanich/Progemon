@@ -71,22 +71,15 @@ public class DrawingUtility {
 
 	public DrawingUtility() {
 		try {
-			File sfile = new File("load\\img\\terrain\\shadow20.png");
-			shadow = new Image(sfile.toURI().toString());
-			File cfile = new File("load\\img\\terrain\\cursur.png");
-			cursor = new Image(cfile.toURI().toString());
-			File hfile = new File("load\\img\\terrain\\highlight.png");
-			highlight = new Image(hfile.toURI().toString());
+			shadow = new Image(ClassLoader.getSystemResource("img/terrain/shadow20.png").toString());
+			cursor = new Image(ClassLoader.getSystemResource("img/terrain/cursur.png").toString());
+			highlight = new Image(ClassLoader.getSystemResource("img/terrain/highlight.png").toString());
 			File qfile = new File(QueueBox.QUEUE_BOX_PATH);
 			queueBoxImage = resize(new Image(qfile.toURI().toString()), 2);
-			File signfile = new File("load\\img\\dialogbox\\Theme1_sign.gif");
-			sign = new Image(signfile.toURI().toString());
-			File pkmnfile = new File("load\\img\\HUD\\pokemonbar.png");
-			pkmnBar = new Image(pkmnfile.toURI().toString());
-			File backgroundfile = new File("load\\img\\background\\meadow.png");
-			background = new Image(backgroundfile.toURI().toString());
-			File itemlabelfile = new File("load\\img\\HUD\\itemlabel.png");
-			itemLabel = new Image(itemlabelfile.toURI().toString());
+			sign = new Image(ClassLoader.getSystemResource("img/dialogbox/Theme1_sign.gif").toString());
+			pkmnBar = new Image(ClassLoader.getSystemResource("img/HUD/pokemonbar.png").toString());
+			background = new Image(ClassLoader.getSystemResource("img/background/meadow.png").toString());
+			itemLabel = new Image(ClassLoader.getSystemResource("img/HUD/itemlabel.png").toString());
 			System.out.println("Drawing Utility Loaded Successfully.");
 		} catch (IllegalArgumentException ex) {
 			System.err.println("DrawingUtitity cannot load static files");

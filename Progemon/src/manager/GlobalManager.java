@@ -70,7 +70,7 @@ public class GlobalManager {
 			@Override
 			protected Void call() throws Exception {
 
-				int num = 12;
+				int num = 12;			
 				FileUtility.loadActiveSkills();
 				progress.setProgress(1.00 / num);
 				FileUtility.loadPokedex();
